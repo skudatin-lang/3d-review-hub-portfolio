@@ -1,0 +1,19 @@
+{
+  "name": "3d-review-hub",
+  "version": "1.0.0",
+  "description": "SaaS платформа для 3D моделеров",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "node server.js"
+  },
+  "dependencies": {
+    "express": "^4.18.2",
+    "multer": "^1.4.5-lts.1",
+    "uuid": "^9.0.1",
+    "bcryptjs": "^2.4.3",
+    "express-session": "^1.17.3",
+    "socket.io": "^4.7.5",
+    "pg": "^8.11.5"
+  }
+}
