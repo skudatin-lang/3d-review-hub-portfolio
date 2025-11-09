@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Личный кабинет - 3D Review Hub</title>
+    <link rel="stylesheet" href="styles/dashboard.css">
+</head>
+<body>
+    <div class="dashboard-container">
+        <!-- Шапка -->
+        <header class="dashboard-header">
+            <div class="header-brand">
+                <h1>3D Review Hub</h1>
+                <span id="userGreeting">Добро пожаловать!</span>
+            </div>
+            <div class="header-actions">
+                <button id="newProjectBtn" class="btn btn-primary">+ Новый проект</button>
+                <button id="logoutBtn" class="btn btn-outline">Выйти</button>
+            </div>
+        </header>
+        <main class="dashboard-main">
+            <!-- Боковая панель -->
+            <aside class="sidebar">
+                <nav class="sidebar-nav">
+                    <a href="#" class="nav-item active" data-tab="projects">📁 Мои проекты</a>
+                    <a href="#" class="nav-item" data-tab="archive">🗄️ Архив</a>
+                    <a href="#" class="nav-item" data-tab="portfolio">🎨 Портфолио</a>
+                    <a href="#" class="nav-item" data-tab="settings">⚙️ Настройки</a>
+                </nav>
+                <div class="user-stats">
+                    <h4>Статистика</h4>
+                    <div class="stat">
+                        <span>Активных проектов:</span>
+                        <strong id="activeProjectsCount">0</strong>
+                    </div>
+                    <div class="stat">
+                        <span>Тариф:</span>
+                        <strong id="userPlan">Free</strong>
+                    </div>
+                </div>
+            </aside>
+            <!-- Основной контент -->
+            <section class="content">
+                <!-- Вкладка проектов -->
+                <div id="projects-tab" class="tab-content active">
+                    <div class="content-header">
+                        <h2>Активные проекты</h2>
+                        <p>Проекты, доступные для просмотра клиентами</p>
+                    </div>
+                    <div id="projectsList" class="projects-grid">
+                        <!-- Проекты будут загружаться здесь -->
+                    </div>
+                    <div id="emptyState" class="empty-state">
+                        <div class="empty-icon">📁</div>
+                        <h3>Пока нет проектов</h3>
+                        <p>Создайте ваш первый проект чтобы поделиться 3D моделью с клиентом</p>
+                        <button id="createFirstProject" class="btn btn-primary">Создать проект</button>
+                    </div>
+                </div>
+                <!-- Вкладка архива -->
+                <div id="archive-tab" class="tab-content">
+                    <div class="content-header">
+                        <h2>Архив проектов</h2>
+                        <p>Завершенные и просроченные проекты</p>
+                    </div>
+                    <div id="archiveList" class="projects-grid">
+                        <!-- Архивные проекты -->
+                    </div>
+                </div>
+                <!-- Вкладка портфолио -->
+                <div id="portfolio-tab" class="tab-content">
+                    <div class="content-header">
+                        <h2>Моё портфолио</h2>
+                        <p>Загрузите свои лучшие работы: фото, видео, 3D-модели</p>
+                    </div>
+                    <button id="addPortfolioBtn" class="btn btn-primary" style="margin-bottom: 20px;">+ Добавить работу</button>
+                    <div id="portfolioGrid" class="projects-grid">
+                        <!-- Работы будут отображаться здесь -->
+                    </div>
+                    <div id="portfolioEmpty" class="empty-state" style="display: none;">
+                        <div class="empty-icon">🖼️</div>
+                        <h3>Портфолио ещё пуст</h3>
+                        <p>Загрузите свои первые работы и покажите клиентам своё мастерство</p>
+                    </div>
+                </div>
+                <!-- Вкладка настроек -->
+                <div id="settings-tab" class="tab-content">
+                    <div class="content-header">
+                        <h2>Настройки аккаунта</h2>
+                    </div>
+                    <div class="settings-content">
+                        <div class="setting-group">
+                            <h4>Тарифный план</h4>
+                            <div class="plan-info">
+                                <div class="current-plan">
+                                    <strong>Текущий план: <span id="currentPlan">Free</span></strong>
+                                </div>
+                                <button class="btn btn-primary">Обновить до Pro</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <!-- Модальное окно создания проекта -->
+    <div id="projectModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>Создать новый проект</h3>
+                <button class="modal-close">&times;</button>
+            </div>
+            <form id="projectForm" class="modal-form" enctype="multipart/form-data">
+                <div class="form-group">
+                    <label for="projectName">Название проекта *</label>
+                    <input type="text" id="projectName" name="name" required placeholder="Например: Дом для клиента Ивана">
+                </div>
+                <div class="form-group">
+                    <label for="projectDescription">Описание</label>
+                    <textarea id="projectDescription" name="description" placeholder="Описание проекта для вас"></textarea>
+                </div>
+                <div class="form-group">
+                    <label for="projectModel">3D Модель *</label>
+                    <div class="file-upload">
+                        <input type="file" id="projectModel" name="model" accept=".stl,.glb,.obj" required>
+                        <label for="projectModel" class="file-upload-label">
+                            <span class="file-icon">📁</span>
+                            <span class="file-text">Выберите файл модели</span>
+                        </label>
+                    </div>
+                    <div class="file-info" id="fileInfo"></div>
+                </div>
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="projectExpires">Срок действия (часы)</label>
+                        <select id="projectExpires" name="expiresIn">
+                            <option value="24">24 часа</option>
+                            <option value="72">3 дня</option>
+                            <option value="168">7 дней</option>
+                            <option value="720">30 дней</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="projectMode">Режим работы</label>
+                        <select id="projectMode" name="mode">
+                            <option value="individual">Индивидуальный</option>
+                            <option value="collaborative">Совместный</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="projectPassword">Пароль (опционально)</label>
+                    <input type="password" id="projectPassword" name="password" placeholder="Оставьте пустым для свободного доступа">
+                </div>
+                <div class="modal-actions">
+                    <button type="button" class="btn btn-outline modal-cancel">Отмена</button>
+                    <button type="submit" class="btn btn-primary">Создать проект</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Модальное окно:

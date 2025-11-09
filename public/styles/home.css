@@ -1,0 +1,226 @@
+/* home.css */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+body {
+    font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+    color: #333;
+    line-height: 1.6;
+    background: #ffffff;
+    overflow-x: hidden;
+}
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 24px 6%;
+    max-width: 1400px;
+    margin: 0 auto;
+}
+.nav-brand h1 {
+    font-size: 1.8rem;
+    font-weight: 800;
+    background: linear-gradient(135deg, #1a2a6c, #4361ee);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+}
+.nav-brand span {
+    display: block;
+    font-size: 0.9rem;
+    color: #666;
+    margin-top: 4px;
+}
+.nav-actions {
+    display: flex;
+    gap: 12px;
+}
+.hero {
+    padding: 60px 6% 80px;
+    max-width: 1400px;
+    margin: 0 auto;
+    text-align: center;
+}
+.hero h1 {
+    font-size: 3.2rem;
+    font-weight: 800;
+    margin-bottom: 20px;
+    color: #1a2a6c;
+    line-height: 1.2;
+}
+.hero-subtitle {
+    font-size: 1.4rem;
+    color: #555;
+    margin-bottom: 50px;
+    max-width: 700px;
+    margin-left: auto;
+    margin-right: auto;
+}
+.hero-features {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 30px;
+    margin-bottom: 60px;
+}
+.feature {
+    background: #f8f9fa;
+    padding: 30px 20px;
+    border-radius: 16px;
+    transition: transform 0.3s, box-shadow 0.3s;
+    border: 1px solid #eee;
+}
+.feature:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
+}
+.feature-icon {
+    font-size: 2.5rem;
+    margin-bottom: 16px;
+}
+.feature h3 {
+    font-size: 1.3rem;
+    margin-bottom: 12px;
+    color: #1a2a6c;
+}
+.feature p {
+    color: #666;
+}
+.hero-actions {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    margin-bottom: 70px;
+}
+.btn {
+    padding: 14px 32px;
+    border: none;
+    border-radius: 10px;
+    font-size: 1.1rem;
+    font-weight: 600;
+    cursor: pointer;
+    text-decoration: none;
+    display: inline-block;
+    text-align: center;
+    transition: all 0.3s;
+}
+.btn-primary {
+    background: linear-gradient(135deg, #1a2a6c, #4361ee);
+    color: white;
+    box-shadow: 0 4px 20px rgba(67, 97, 238, 0.3);
+}
+.btn-primary:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 6px 25px rgba(67, 97, 238, 0.4);
+}
+.btn-outline {
+    background: transparent;
+    color: #4361ee;
+    border: 2px solid #4361ee;
+}
+.btn-outline:hover {
+    background: #f0f4ff;
+    transform: translateY(-3px);
+}
+.pricing {
+    padding: 60px 6%;
+    background: #f8fafc;
+    border-radius: 24px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+.pricing h3 {
+    font-size: 2.2rem;
+    margin-bottom: 40px;
+    color: #1a2a6c;
+}
+.pricing-cards {
+    display: flex;
+    gap: 30px;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+.pricing-card {
+    background: white;
+    padding: 40px 30px;
+    border-radius: 20px;
+    width: 100%;
+    max-width: 360px;
+    border: 1px solid #eaeaea;
+    transition: all 0.3s;
+}
+.pricing-card.featured {
+    border: 2px solid #4361ee;
+    transform: scale(1.03);
+    box-shadow: 0 10px 30px rgba(67, 97, 238, 0.15);
+}
+.pricing-card h4 {
+    font-size: 1.5rem;
+    margin-bottom: 16px;
+    color: #1a2a6c;
+}
+.pricing-card.featured h4 {
+    color: #4361ee;
+}
+.price {
+    font-size: 2.2rem;
+    font-weight: 800;
+    margin-bottom: 24px;
+    color: #1a2a6c;
+}
+.pricing-card.featured .price {
+    color: #4361ee;
+}
+.pricing-card ul {
+    list-style: none;
+    margin-bottom: 30px;
+}
+.pricing-card li {
+    padding: 8px 0;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    color: #555;
+}
+.pricing-card li::before {
+    content: "•";
+    color: #2ecc71;
+    font-weight: bold;
+    font-size: 1.4rem;
+}
+.pricing-card li.failed::before {
+    content: "•";
+    color: #e74c3c;
+}
+footer {
+    text-align: center;
+    padding: 40px 6% 20px;
+    color: #888;
+    font-size: 0.95rem;
+    border-top: 1px solid #eee;
+    margin-top: 80px;
+}
+@media (max-width: 768px) {
+    .navbar {
+        flex-direction: column;
+        gap: 20px;
+    }
+    .hero h1 {
+        font-size: 2.4rem;
+    }
+    .hero-subtitle {
+        font-size: 1.2rem;
+    }
+    .hero-actions {
+        flex-direction: column;
+        align-items: center;
+    }
+    .btn {
+        width: 100%;
+        max-width: 300px;
+    }
+    .pricing-card.featured {
+        transform: scale(1);
+    }
+}
